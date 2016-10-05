@@ -34,7 +34,6 @@ public class Table {
 
 	public static String getFormatTablename(String name) {
 		try {
-			// 按照规定所有的tablename 均已t_开始，转换后所有的表名称全部去掉t_并且首字母小写，其它单词大写
 			name = name.replaceFirst("t_", "");
 			String[] subNames = name.split("_");
 			String upperName="";

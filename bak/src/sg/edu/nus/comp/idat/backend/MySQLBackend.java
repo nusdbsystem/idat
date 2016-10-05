@@ -128,7 +128,6 @@ public class MySQLBackend {
 						tableName, "%");
 				while(columnSet.next()){
 					String columnName = columnSet.getString("COLUMN_NAME");
-					  //备注
 					String columnComment = columnSet.getString("REMARKS");
 					descmap.put(columnName, columnComment);
 				}
