@@ -1,6 +1,6 @@
-package sg.edu.nus.comp.nuhsviz.handler;
+package sg.edu.nus.comp.idat.handler;
 
-import sg.edu.nus.comp.nuhsviz.Config;
+import sg.edu.nus.comp.idat.Config;
 
 public class ConfigHandler extends BaseHandler {
 	 

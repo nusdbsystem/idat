@@ -1,4 +1,4 @@
-package sg.edu.nus.comp.nuhsviz.handler;
+package sg.edu.nus.comp.idat.handler;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -15,9 +15,9 @@ import java.util.TreeMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import sg.edu.nus.comp.nuhsviz.Config;
-import sg.edu.nus.comp.nuhsviz.backend.DatabaseHelper;
-import sg.edu.nus.comp.nuhsviz.backend.MySQLBackend;
+import sg.edu.nus.comp.idat.Config;
+import sg.edu.nus.comp.idat.backend.DatabaseHelper;
+import sg.edu.nus.comp.idat.backend.MySQLBackend;
 
 public class SQLQueryHandler extends BaseHandler {
 	

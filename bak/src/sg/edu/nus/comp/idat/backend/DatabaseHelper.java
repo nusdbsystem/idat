@@ -1,6 +1,6 @@
-package sg.edu.nus.comp.nuhsviz.backend;
+package sg.edu.nus.comp.idat.backend;
 
-import sg.edu.nus.comp.nuhsviz.Config;
+import sg.edu.nus.comp.idat.Config;
 
 
 public class DatabaseHelper {

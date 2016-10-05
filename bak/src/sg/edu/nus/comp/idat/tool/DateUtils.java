@@ -1,4 +1,4 @@
-package sg.edu.nus.comp.nuhsviz.tool;
+package sg.edu.nus.comp.idat.tool;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;

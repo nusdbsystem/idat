@@ -1,4 +1,4 @@
-package sg.edu.nus.comp.nuhsviz;
+package sg.edu.nus.comp.idat;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -1,4 +1,4 @@
-package sg.edu.nus.comp.nuhsviz.handler;
+package sg.edu.nus.comp.idat.handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,11 +7,11 @@ import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-import sg.edu.nus.comp.nuhsviz.tool.HttpTool;
-
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+
+import sg.edu.nus.comp.idat.tool.HttpTool;
  
 /**
  * @author Aaron

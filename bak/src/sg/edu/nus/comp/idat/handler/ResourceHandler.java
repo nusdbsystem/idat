@@ -1,12 +1,10 @@
-package sg.edu.nus.comp.nuhsviz.handler;
+package sg.edu.nus.comp.idat.handler;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
- 
 
-
-import sg.edu.nus.comp.nuhsviz.Config;
+import sg.edu.nus.comp.idat.Config;
  
 /**
  * @author Aaron

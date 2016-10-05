@@ -1,11 +1,11 @@
-package sg.edu.nus.comp.nuhsviz.handler;
+package sg.edu.nus.comp.idat.handler;
 
 import org.json.JSONObject;
 
-import sg.edu.nus.comp.nuhsviz.Config;
-import sg.edu.nus.comp.nuhsviz.backend.DatabaseHelper;
-import sg.edu.nus.comp.nuhsviz.backend.MySQLBackend;
-import sg.edu.nus.comp.nuhsviz.backend.Table;
+import sg.edu.nus.comp.idat.Config;
+import sg.edu.nus.comp.idat.backend.DatabaseHelper;
+import sg.edu.nus.comp.idat.backend.MySQLBackend;
+import sg.edu.nus.comp.idat.backend.Table;
 
 public class GetAttrHandler extends BaseHandler {
 	 

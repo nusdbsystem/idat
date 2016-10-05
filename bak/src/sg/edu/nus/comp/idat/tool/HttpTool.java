@@ -1,4 +1,4 @@
-package sg.edu.nus.comp.nuhsviz.tool;
+package sg.edu.nus.comp.idat.tool;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
