@@ -1,0 +1,16 @@
+[
+     {
+    	 "id":0,
+    	 "name":"all",
+    	 "description":"whole data",
+    	 "states":[1],
+    	 "currentIndex":0,
+    	 "currentDataSets":		[0],		
+ 		 "nextDataSets":		[],	
+    	 "sliceDimension":		0,
+    	 "groupDimension":		0,
+ 		"aggregateMethod":		"count",
+ 		"aggregateDimension":	0,
+ 		"chartDefine":			"pie"
+     } 
+ ] 

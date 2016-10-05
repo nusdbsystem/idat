@@ -1,0 +1,368 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body { 
+  background-color:#222;
+}
+
+
+ 
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar{
+  background-color: transparent;
+  color:#999;
+  border: 0;
+}
+.navbar .navbar-nav>li>a{
+	color:#999;
+}
+
+
+.navbar .navbar-nav>li>a:hover{
+	color:#333;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: #f5f5f5;
+    border-right: 1px solid #eee;
+  }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar  li a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar  .bright > a,
+.nav-sidebar  .bright > a:hover,
+.nav-sidebar  .bright > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.nav-sidebar  .active > a,
+.nav-sidebar  .active > a:hover,
+.nav-sidebar  .active > a:focus {
+ 
+  background-color: #ddd;
+}
+
+.navbar-header{
+	position:fixed;
+	
+  z-index:1000;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+
+/*
+ * Placeholder dashboard ideas
+ */
+
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.placeholders h4 {
+  margin-bottom: 0;
+}
+.placeholder {
+  margin-bottom: 20px;
+}
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.left{
+	
+	float:left;
+}
+
+ .right{
+	
+	float:right;
+	
+}
+
+#changeLayout{
+	 position:fixed;
+	 top:0px;
+	 left:50%; 
+	 width:300px;  
+}	
+
+#changeLayout .btn{ 
+	margin:10px;
+	width:80px;
+	
+}
+#changeTable{
+	 position:fixed;
+	 left:10px;
+	 top:50px; 
+	 z-index:200;
+}
+
+#changeTable .btn{ 
+	margin:10px;
+	width:80px;
+	
+}
+
+#favourite{
+	 position:fixed;
+	 left:280px;
+	 top:10px; 
+	 z-index:200;
+}
+ 
+#favourite .btn{
+	color:#fff;	
+	
+}
+
+#favourite .btn.selected{
+	border-color: #fff;
+	border-width: 2px; 
+	border-top-style: solid;
+	-webkit-box-shadow: 0 0 5px rgba(231,254,237,0.6);
+  	box-shadow: 0 0 5px rgba(231,254,237,0.6);
+  	width: 50px;
+  	height: 50px;
+  	line-height: 36px;
+}
+
+#favourite a{
+	margin: 0 10px;
+	
+}
+
+.board{
+	margin: 10px;
+	padding: 15px 30px;
+	color: #eee;
+	background-color: rgba(100,115,100,0.8);
+	border-top-color: #222;
+	border-top-width: 5px;
+	border-radius: 0 0 10px 10px;
+	width: 785px; 
+	border-top-style: solid;
+	-webkit-box-shadow: 0 0 20px rgba(231,254,237,0.6);
+  	box-shadow: 0 0 20px rgba(231,254,237,0.6);
+}
+
+.board h3{
+	margin:5px 0;
+	
+}
+ 
+.board .btn{
+	margin:5px;
+	padding:0px 10px;
+} 
+ 
+.board .mask{ 
+    position: absolute;
+  	width: 800px;
+ 	height: 500px;
+  	background: #fff;
+  	z-index: 100;
+  	opacity: 0;
+  	top: 0px;
+  	left: 0px;
+} 
+ 
+
+path.selected {
+ 	stroke: #eee;
+	stroke-width: 2; 
+}
+ 
+.chart {
+	width:740px;
+	max-height: 540px;
+  	overflow: auto;
+}  
+ .title{
+ 	font-size:20px;
+ 	margin:5px;
+ 	line-height:30px;
+ }
+ 
+.navbar-fixed-top{
+
+	z-index:50;
+} 
+#sunburst{
+	position:fixed;
+	top:100px;
+	left:0px;
+	width:250px; 
+	height:100%; 
+	z-index:100;  
+}
+  
+#sunburst .svg-btn{
+	color:#fff;
+}
+
+article:focus{
+	outline:none;
+}
+
+article section{
+	-webkit-transition: 1s;
+	-moz-transition:    1s;
+	-ms-transition:     1s;
+	-o-transition:      1s;
+	transition:         1s;
+	
+}
+
+
+.circle{
+	width:300px;
+	height:300px;
+	border-radius: 150px;
+	color: #eee;
+	background-color: rgba(100,115,100,0.6);  
+  	border-width: 4px;
+  	border-style: solid;
+	-webkit-box-shadow: 0 0 20px rgba(231,254,237,0.6);
+  	box-shadow: 0 0 20px rgba(231,254,237,0.6);
+  	text-align:center;
+  	padding:40px;
+}
+ 
+.circle h2{
+	font-size: 80px;
+	text-align: left;
+  	overflow: visible;
+  	position: absolute;
+}
+
+.circle h2.small{
+	font-size:24px;
+	position:relative;
+	text-align:center;
+}
+
+ 
+#drillDown{
+	position:fixed;
+	top:10px; 
+	left:50%;
+	margin-left:20px; 
+  	text-align:center; 
+  	cursor: pointer;
+}
+
+#drillDown span{
+	color: #ccc; 
+  	font-size: 40px;
+	margin-top:10px;
+}
+
+#rollUp{ 
+	position:fixed;
+	top:10px; 
+	left:50%;
+	margin-left:-100px; 
+  	text-align:center; 
+  	cursor: pointer;
+}
+#rollUp span{
+	color: #ccc; 
+  	font-size: 40px;
+  	margin-top:10px;
+}
+
+#backToExplore{ 
+	position:fixed;
+	top:10px; 
+	right:20px; 
+  	text-align:center; 
+  	cursor: pointer;
+}
+#backToExplore span{
+	color: #ccc; 
+  	font-size: 40px;
+  	margin-top:10px;
+}
+
+#story{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 10px 10px 10px 280px;
+  text-align: center;
+  
+}
+#story h2{
+	color:#eee;
+}
+
+
+#jobContainer .attrContainer{
+	max-height:500px;
+	overflow:auto;
+}
+
+#jobContainer .btn{
+	padding:2px 6px;
+	margin:4px 4px;
+	
+}
+
+#jobContainer .editContainer tr.unSelected{
+	background-color:#eee;
+}
+
+#jobContainer .editContainer td,th{
+	padding:2px 6px;
+}

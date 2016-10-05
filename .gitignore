@@ -1,0 +1,5 @@
+.tmp
+static
+.project
+node_modules/
+src/bower_components

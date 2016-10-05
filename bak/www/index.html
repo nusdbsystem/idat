@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>IDAT</title> 
+    <!-- Bootstrap core CSS --> 
+    <link href="css/style.css" rel="stylesheet"> 
+    <link href="css/bootstrap.css" rel="stylesheet"> 
+    <!-- Custom styles for this template -->
+    <link href="css/custom.css" rel="stylesheet"> 
+    <link href="css/svg.css" rel="stylesheet"> 
+  </head> 
+  <body> 
+	  <div class="stars"></div>
+	  <div class="twinkling"></div>
+	  <div class="clouds"></div>
+       <div class="navbar-header"> 
+         	<a class="navbar-brand" href="#" style="font-size:24px;color:#fff">IDAT</a>
+	  	 	<a href="#"  id="setting" class="navbar-brand" ><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a>
+	  	 	<a href="#"  id="outportJobBtn" class="navbar-brand" ><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+	  	 	<a href="#"  id="showDataSource" class="navbar-brand" ><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></a>
+						
+       </div>
+       <div id="explore"></div>
+	   <div id="story"></div>
+	   <div id="sunburst"> 
+	   </div>
+	   <div id="favourite">
+	   </div> 
+	   <div id="job">
+	   </div>
+	   
+	<script type="text/x-handlebars" id='explore_template' >
+			<article data-template="tab"> 
+			 	<section id="upAnchor"> 
+			 	</section>
+			 	<section id="downAnchor"> 
+			 	</section>
+			 	<section id="currentDataSet"></section>
+			</article> 
+			<div id="rollUp"><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span></div>
+			<div id="drillDown"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></div>
+			
+	</script>
+	 
+	<script type="text/x-handlebars" id='dataSet_template' >
+ 
+			<div class="circle">
+				<h2>{{#each names}}{{this}}<br/>{{/each}}</h2>
+			</div>
+	</script>
+	<script type="text/x-handlebars" id='chart_template' >
+	    
+			<div class="board">
+				<div class="mask"></div>
+				<div class="row">  
+					<div class="yPanel left"></div>
+					<div class="xPanel left"></div>
+					<div class="groupPanel left"></div>
+					<div class="chartTypePanel right"></div>
+					
+				 	<div class="right"> 
+						<a href="#"  class="btn btn-default removeChart" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+						<a href="#"  class="btn btn-default saveChart" ><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a> 
+						<a href="#"  class="btn btn-default likeChart" ><span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a> 
+					</div>
+					 
+				</div>
+				<div class="row">
+					<div class="left">
+						<span>execute time:{{time}} ms</span>
+					</div>  
+				</div>
+				<div class="row"> 
+					<div  class="chart" id="highChart_{{id}}" > </div>  
+				</div>		
+			   	 
+			</div> 
+		 
+	</script> 
+	
+	<script type="text/x-handlebars" id='yPanel_template' >
+	
+			 
+				<div class="left">
+					<span class="title">show</span >
+				</div> 
+				<div class="btn-group left">
+					 
+					<a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{currentMethod}}</span></a>
+						 
+					<ul class="dropdown-menu dropdown-default">
+						 
+						{{#each methods}}  
+								<li>
+									<a class="changeMethod"> {{this}}</a>
+								</li>  
+						{{/each}}" +
+								"
+					</ul>
+				</div>
+				
+				<div class="btn-group left"> 
+						<a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{currentMeasure.name}}</span></a>
+					<ul class="dropdown-menu dropdown-default">
+						{{#each measures}} 
+							<li>
+								<a class="changeMeasure" _id="{{id}}" >{{name}}</a>
+							</li> 
+						{{/each}}
+					</ul>
+				</div> 
+	</script> 
+	
+	<script type="text/x-handlebars" id='groupPanel_template' >
+	 
+			<div class="left">
+			<span class="title">with detail of<span class="title">
+			</div>  
+			<div class="btn-group left">
+				 
+				<a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{current.name}}</span></a>
+				  
+		 		 
+				<ul class="dropdown-menu dropdown-default">
+					{{#each groups}} 
+						 
+							<li>
+								<a class="action" _id="{{id}}" >{{shortName}}:{{name}}</a>
+							</li>  
+					{{/each}}
+				</ul>
+			</div>
+			  
+	</script> 
+	<script type="text/x-handlebars" id='chartTypePanel_template' >
+	  
+			<div class="btn-group right"> 
+				<a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{current}}</span></a> 
+				<ul class="dropdown-menu dropdown-default">
+					{{#each types}}  
+							<li>
+								<a class="action" >{{this}}</a>
+							</li>  
+					{{/each}}
+				</ul>
+			</div>
+			  
+	</script> 
+	<script type="text/x-handlebars" id='xPanel_template' >
+		 
+			<div class="left">
+			<span class="title">by</span">
+			</div>  
+			<div class="btn-group left"> 
+				<a href="#" data-toggle="dropdown" class="btn btn-default dropdown-toggle">{{current.name}}</span></a>
+				<ul class="dropdown-menu dropdown-default">
+					{{#each dimensions}} 
+							<li>
+								<a class="action" _id="{{id}}">{{shortName}}:{{name}}</a>
+							</li>  
+					{{/each}}
+				</ul>
+			</div>  
+	</script>
+ 	<script type="text/x-handlebars" id='favourite_template' >
+		
+			 
+			 {{#each this}}  
+					<a href="#" class="btn folder" _id="{{id}}" style="background-color:{{color}}">{{size}}</a>
+			 {{/each}} 
+					<a href="#"  class="addFolder" style="color:#eee"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a> 
+					<a href="#"  class="removeFolder" style="color:#eee"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a> 
+	 
+	</script>
+ 
+	<script type="text/x-handlebars" id='story_template' >
+		 <h2>story board</h2>
+		 <div id="backToExplore"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+		
+	</script>
+	<script type="text/x-handlebars" id='job_template' >
+	  	<div class="modal" id="jobModal" tabindex="-1"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  	<div class="modal-dialog modal-lg">
+		  		<div class="modal-content">
+		  			<div class="modal-header">
+		  				 <h4 class="modal-title">Job Management</h4>
+		  			</div>
+			  		<div class="modal-body">
+			  			<div class="container-fluid">
+			  				<div class="row">
+			  					<div class="col-md-3">
+			  						<h4>Total:<span id="jobNum"></span> jobs. </h4>
+			  						
+			  						<div id="jobList"></div>
+			  						<div>
+			  							<a id="createJob"   class="btn btn-primary" title="Create New Job"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+			  							<a id="importJob"   class="btn btn-primary" title="Import Existing Job"><span class="glyphicon glyphicon-import" aria-hidden="true"></span></a>
+			  						</div>
+			  					</div>
+			  					<div id="jobContainer" class="col-md-9 "></div>
+			  				</div> 
+			  			</div>
+			  		</div> 
+			  		<div class="modal-footer">
+			          	<button type="button" class=" btn btn-default btn-close">Close</button>
+			        </div>
+			   </div>
+		    </div>
+		</div> 
+	</script>
+
+	<script type="text/x-handlebars" id='importJob_template' >
+	  	<form> 
+			  <div class="form-group">
+			    <label for="file">Job File:</label>
+			    <input  type="file" name="file" id="jobFile"></input>
+			  </div>
+			  <div class="form-group">
+			    <label for="password">DB Password:</label>
+			    <input class="form-control" type="password" name="password" id="inputPassword"></input>
+			    <input type="text" style="display:none"></input>
+			  </div> 
+			 
+			  <button id="importFileBtn" type="button" class="btn btn-primary" style="display:none">Submit</button> 
+		</form>
+	</script>
+	<script type="text/x-handlebars" id='createJob_template' >
+	  	<form id="createJobForm"> 
+			  <div class="form-group">
+			    <label >name:</label>
+			    <input class="form-control" type="text" name="name" value="diagnosis"></input>
+			  </div> 
+			 <div class="form-group">
+			    <label >server:</label>
+			    <input class="form-control" type="text" name="server" value="137.132.82.111"></input>
+			  </div> 
+			 <div class="form-group">
+			    <label >userName:</label>
+			    <input class="form-control" type="text" name="userName" value="sqlsugg"></input>
+			  </div> 
+			 <div class="form-group">
+			    <label >password:</label>
+			    <input class="form-control" type="password" name="password" value="sqlsugg"></input>
+			  </div> 
+			 <div class="form-group">
+			    <label >dbName:</label>
+			    <input class="form-control" type="text" name="dbName" value="nuhsviz"></input>
+			  </div> 
+			 <div class="form-group">
+			    <label >tableName:</label>
+			    <input class="form-control" type="text" name="tableName" value="diag2013_sample"></input>
+			  </div>  
+			  <button id="createJobBtn" type="button" class="btn btn-primary" >Submit</button> 
+		</form>
+	</script>
+	<script type="text/x-handlebars" id='jobList_template' >
+	 	{{#each this}}  
+	 		<div>
+	  	 		<span class="title">{{name}}</span>
+	  	 		<a class="removeJob"   class="btn btn-primary" title="removeJob" index="{{@index}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+	  	 		<a class="showJob"   class="btn btn-primary" title="showJob" index="{{@index}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+	  	 		<a class="changeJob"   class="btn btn-primary" title="changeJob" index="{{@index}}"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>
+	  	 	</div>
+	  	{{/each}}
+	</script>
+
+	<script type="text/x-handlebars" id='jobDetail_template' >
+	  	 <h2 class="title">job:{{name}}</h2>
+	  	 <div>
+	  	 	<h4>dataSource</h4>
+	  	 	<table>
+	  	 	<tr>
+	 			<td>server:</td>
+	 			<td>{{dataSource.server}}</td>
+	 			<td>userName:</td>
+	 			<td>{{dataSource.userName}}</td>
+	 		</tr>
+	 		<tr>
+	 			<td>dbName:</td>
+	 			<td>{{dataSource.dbName}}</td>
+	 			<td>tableName:</td>
+	 			<td>{{dataSource.tableName}}</td>
+	 		</tr>
+	  	 	</table>
+	  	 </div> 
+	  	 <div>
+	  	 	<h4>Attrs</h4>
+	  	 	<div class="attrContainer">
+		  	 	<table >
+		  	 		<thead>
+		  	 		<tr>
+		  	 			<th>isSelected</th>
+		  	 			<th>columnName</th>
+		  	 			<th class="typeContainer"></th>
+		  	 		</tr>
+		  	 		</thead>
+		  	 		<tbody class="editContainer">
+		  	 		</tbody>
+		  	 	</table>
+		  	 </div>
+	  	 
+	  	 </div>
+	</script>
+	
+	<script type="text/x-handlebars" id='jobDetail_template' >
+	</script>
+	
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/lib/jquery-1.10.2.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/highcharts.js"></script>
+	<script src="js/lib/highcharts-map.js"></script>
+	<script src="js/lib/highcharts-sg-all.js"></script>
+    <script src="js/lib/handlebars-v2.0.0.js"></script>  
+    <script src="js/lib/d3.js"></script> 
+   	<script src="js/lib/jmpress.all.js"></script> 
+    <script src="js/lib/hammer.js"></script> 
+     
+	<script src="js/idat.js"></script>
+	<script src="js/models.js"></script>
+	<script src="js/app_controller.js"></script>
+	<script src="js/job_controller.js"></script>
+	<script src="js/explore_controller.js"></script>
+	<script src="js/story_controller.js"></script>
+	<script src="js/chart_controller.js"></script>
+	<script src="js/dataSet_controller.js"></script>
+	<script src="js/favourite_controller.js"></script>
+	<script src="js/navigation_controller.js"></script>
+	
+	<script type="text/javascript">
+	
+		$("document").ready(function(){
+			
+			try{
+				IDAT.init();	
+				
+			}catch(e){
+				alert(e); 
+			}
+		});
+		
+	</script>
+	    
+  </body>
+</html>

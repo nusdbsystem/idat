@@ -1,0 +1,9 @@
+[
+     {
+    	"id":					0,
+    	"name":					"all", 
+    	"charts":				[0],
+ 	"condition":				"where 1=1", 
+	"children":				[1,2]				
+     } 
+ ] 

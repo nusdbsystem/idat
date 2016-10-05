@@ -1,0 +1,11 @@
+// Shared variables and mixins
+@import 
+    "global/var"                        // global variables
+;
+
+@import 
+// sections
+    "page"
+,   "theme"
+,   "svg"
+;

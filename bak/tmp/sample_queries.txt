@@ -1,0 +1,9 @@
+chart
+{"CNT":"select icd9_level1_code,count(*) from diag2013_sample group by icd9_level1_code","AvgAge":"select icd9_level1_code,avg(age) from diag2013_sample group by icd9_level1_code"}
+
+{"ds1":"select icd9_level1_code,count(*) from diag2013_sample group by icd9_level1_code","ds2":"select age_bin, gender,count(*) from diag2013_sample group by age_bin, gender"}
+
+{"CNT":"select count(*) from diag2013"}
+
+sample
+select * from diag2013_sample limit 10

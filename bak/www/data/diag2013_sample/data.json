@@ -1,0 +1,200 @@
+{ 
+	"name":"sample",
+	"dataSource":{
+		"id":0,
+		"server":"dbpcm.d1.comp.nus.edu.sg", 
+		"userName":"sqlsugg",
+		"dbName":"nuhsviz",
+		"tableName":"diag2013_sample"
+	},
+	"attr":[
+		{
+			"id":4,
+			"colName":"icd9_code",
+			"name":"disease",
+			"shortName":"D",
+			"isTop":false,
+			"hasChild":false, 
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Disease code:{key}\n {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":3,
+			"colName":"icd9_level3_code",
+			"name":"disease.level3",
+			"shortName":"D3",
+			"isTop":false,
+			"hasChild":true,
+			"child":4,
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Disease code:{key}\n {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":2,
+			"colName":"icd9_level2_code",
+			"name":"disease.level2",
+			"shortName":"D2",
+			"isTop":false,
+			"hasChild":true,
+			"child":3,
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Disease code:{key}\n {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":1,
+			"colName":"icd9_level1_code",
+			"name":"disease.level1",
+			"shortName":"D1",
+			"isTop":true,
+			"hasChild":true,
+			"child":2,
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Disease code:{key}\n {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":0,
+			"colName":"*",
+			"name":"*",
+			"shortName":"*",
+			"isTop":true,
+			"hasChild":false, 
+			"isNum":false,
+			"canGroup":true,
+			"canSlice":true,
+			"canMeasure":true,
+			"noteTemplate":"Choose all",
+			"chartTypes":["pie"] 
+		},{
+			"id":6,
+			"colName":"admission_month",
+			"name":"time.month",
+			"shortName":"TM",
+			"isTop":true,
+			"hasChild":false, 
+			"isNum":true,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Admission time: \n month {value}",
+			"chartTypes":["line","pie","column"]
+		},{
+			"id":5,
+			"colName":"admission_quarter",
+			"name":"time.quarter",
+			"shortName":"TQ",
+			"isTop":true,
+			"hasChild":true,
+			"child":6,
+			"isNum":true,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"admission time: \n quarter {value}",
+			"chartTypes":["line","pie","column"]
+		},{
+			"id":7,
+			"colName":"region",
+			"name":"region",
+			"shortName":"R",
+			"isTop":true,
+			"hasChild":false, 
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Choose region: \n {value}",
+			"chartTypes":["map","line","column","pie"]
+		},{
+			"id":9,
+			"colName":"age",
+			"name":"age",
+			"shortName":"A",
+			"isTop":false,
+			"hasChild":false, 
+			"isNum":true,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":true,
+			"noteTemplate":"Choose age: \n {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":8,
+			"colName":"age_bin",
+			"name":"age.decade",
+			"shortName":"AD",
+			"isTop":true,
+			"hasChild":true,
+			"child":9,
+			"isNum":true,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Choose age: \n decade {value}",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":10,
+			"colName":"gender",
+			"name":"gender",
+			"shortName":"GA",
+			"isTop":true,
+			"hasChild":false,
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":false,
+			"noteTemplate":"Choose {value} gender",
+			"chartTypes":["column","line","pie"]
+		},{
+			"id":11,
+			"colName":"nric",
+			"name":"userId",
+			"shortName":"UID",
+			"isTop":true,
+			"hasChild":false,
+			"isNum":false,
+			"canSlice":true,
+			"canGroup":true,
+			"canMeasure":true,
+			"noteTemplate":"Choose nric id {value}",
+			"chartTypes":["column","line","pie"]
+		}
+	],
+	"dataSet":[
+	     {
+		"id":					0,
+		"name":					"all", 
+		"shortName":			"all",
+		"charts":				[0],
+		"condition":				"where 1=1", 
+		"children":				[]				
+	     } 
+	],
+	"chart":[
+	     {
+		 "id":0,
+		 "name":"all",
+		 "description":"whole data",
+		 "states":[1],
+		 "currentIndex":0,
+		 "currentDataSets":		[0],		
+			 "nextDataSets":		[],	
+		 "sliceDimension":		0,
+		 "groupDimension":		0,
+			"aggregateMethod":		"count",
+			"aggregateDimension":	0,
+			"chartType":			"pie"
+	     } 
+	 ]
+}
