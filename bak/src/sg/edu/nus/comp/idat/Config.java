@@ -12,6 +12,7 @@ public class Config {
 	public static Integer BACK_LOG = 50;
 	public static Integer Thread_Count = 100;
 	public static String WEB_ROOT_PATH = "www/"; 
+	public static String BASE_URL = ""; 
 	public static final String CONFIG_FILE_PATH = "conf/config.properties";
 	
 	public static String DATABASE_HOST = "";  
@@ -38,7 +39,7 @@ public class Config {
 		Thread_Count = Integer.valueOf(System.getProperty("threadCount",
 				String.valueOf(Thread_Count)));
 		WEB_ROOT_PATH = System.getProperty("webrootPath", WEB_ROOT_PATH);
-		
+		BASE_URL = System.getProperty("baseUrl", BASE_URL);
 		   
 	}
 

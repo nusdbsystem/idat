@@ -14,11 +14,15 @@ public class ResourceHandler extends BaseHandler{
 	 
     public void handle(HttpRequest request) { 
     	FileInputStream fis = null ;   
-    	if("/".equals(request.getPath())){
-    		request.setPath("/index.html");
+    	String path = request.getPath();
+    	if((Config.BASE_URL+"/").equals(path)){
+    		request.setPath(Config.BASE_URL+"/index.html");
+    		path ="/index.html";
+    	}else{
+    		path= path.substring(Config.BASE_URL.length());
     	}
     	try {
-			File file = new File(Config.WEB_ROOT_PATH+request.getPath()); 
+			File file = new File(Config.WEB_ROOT_PATH+path); 
 			//System.out.println("file absolute path:"+file.getAbsolutePath());
 			boolean fileExists = true ; 
 	    	try { 

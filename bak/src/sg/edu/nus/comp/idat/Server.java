@@ -25,14 +25,15 @@ public class Server {
             InetSocketAddress inetSock = new InetSocketAddress(Config.PORT);  
             
             HttpServer httpServer = HttpServer.create(inetSock, Config.BACK_LOG);  
+            System.out.println("Base url"+Config.BASE_URL); 
               
-            httpServer.createContext("/api/",new SQLQueryHandler());
+            httpServer.createContext(Config.BASE_URL+"/api/",new SQLQueryHandler());
             
-            httpServer.createContext("/config/",new ConfigHandler()); 
+            httpServer.createContext(Config.BASE_URL+"/config/",new ConfigHandler()); 
             
-            httpServer.createContext("/getAttr/",new GetAttrHandler()); 
+            httpServer.createContext(Config.BASE_URL+"/getAttr/",new GetAttrHandler()); 
              
-            httpServer.createContext("/",new ResourceHandler());
+            httpServer.createContext(Config.BASE_URL+"/",new ResourceHandler());
            
             httpServer.setExecutor(Executors.newFixedThreadPool(Config.Thread_Count));  
             httpServer.start();  
@@ -42,7 +43,7 @@ public class Server {
             Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
             if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
                 try {
-                    desktop.browse(new URI("http://localhost:"+Config.PORT+"/"));
+                    desktop.browse(new URI("http://localhost:"+Config.PORT+Config.BASE_URL+"/"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
